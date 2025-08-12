@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { Menu, X, Download, ChevronDown } from 'lucide-react'
+import { Menu, X, Download } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { 
   buttonVariants
@@ -19,18 +19,15 @@ interface NavbarProps {
 const navigationItems = [
   {
     name: 'Features',
-    href: '#features',
-    description: 'Discover what makes CASH OUT effective'
+    href: '#features'
   },
   {
     name: 'Product',
-    href: '#progress',
-    description: 'See how our app helps you recover'
+    href: '#progress'
   },
   {
     name: 'Blog',
     href: '/blog',
-    description: 'Recovery tips and success stories',
     external: true
   }
 ]
@@ -63,8 +60,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     // Prevent body scroll when mobile menu is open
     if (!isMobileMenuOpen) {
       document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = '0px' // Prevent layout shift
     } else {
       document.body.style.overflow = 'unset'
+      document.body.style.paddingRight = 'unset'
     }
   }
 
@@ -72,7 +71,34 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false)
     document.body.style.overflow = 'unset'
+    document.body.style.paddingRight = 'unset'
   }
+
+  // Close mobile menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        closeMobileMenu()
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('keydown', handleEscape)
+      return () => document.removeEventListener('keydown', handleEscape)
+    }
+  }, [isMobileMenuOpen])
+
+  // Close mobile menu on window resize (when switching to desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isMobileMenuOpen) {
+        closeMobileMenu()
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isMobileMenuOpen])
 
   // Handle smooth scroll to sections
   const handleNavClick = (href: string, external?: boolean) => {
@@ -199,16 +225,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
-            <motion.div
-              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </motion.div>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </nav>
 
@@ -221,63 +242,46 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden overflow-hidden border-t border-[var(--color-gray-800)]"
+              className="lg:hidden overflow-hidden border-t border-[var(--color-gray-800)] bg-[var(--color-black)]/95 backdrop-blur-md"
             >
-              <div className="py-6 space-y-4">
+              <div className="py-4 space-y-2">
                 {/* Mobile Navigation Links */}
-                {navigationItems.map((item, index) => (
-                  <motion.div
+                {navigationItems.map((item) => (
+                  <a
                     key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    href={item.href}
+                    onClick={(e) => {
+                      if (!item.external) {
+                        e.preventDefault()
+                        handleNavClick(item.href, item.external)
+                      } else {
+                        closeMobileMenu()
+                      }
+                    }}
+                    className={cn(
+                      'block py-3 px-4 text-gray-300 hover:text-white hover:bg-[var(--color-gray-800)]/50 transition-all duration-200',
+                      focusVisible
+                    )}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
                   >
-                    <a
-                      href={item.href}
-                      onClick={(e) => {
-                        if (!item.external) {
-                          e.preventDefault()
-                          handleNavClick(item.href, item.external)
-                        } else {
-                          closeMobileMenu()
-                        }
-                      }}
-                      className={cn(
-                        'block py-3 px-4 text-gray-300 hover:text-white hover:bg-[var(--color-gray-800)]/50 transition-all duration-200 rounded-lg',
-                        focusVisible
-                      )}
-                      target={item.external ? '_blank' : undefined}
-                      rel={item.external ? 'noopener noreferrer' : undefined}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-medium flex items-center">
-                            {item.name}
-                            {item.external && (
-                              <span className="ml-2 text-xs opacity-60" aria-hidden="true">↗</span>
-                            )}
-                          </div>
-                          <div className="text-sm text-gray-400 mt-1">
-                            {item.description}
-                          </div>
-                        </div>
-                        <ChevronDown className="w-4 h-4 text-gray-500 rotate-[-90deg]" />
-                      </div>
-                    </a>
-                  </motion.div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">
+                        {item.name}
+                        {item.external && (
+                          <span className="ml-2 text-xs opacity-60" aria-hidden="true">↗</span>
+                        )}
+                      </span>
+                    </div>
+                  </a>
                 ))}
 
                 {/* Mobile Download Button */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: navigationItems.length * 0.1 }}
-                  className="pt-4 border-t border-[var(--color-gray-800)]"
-                >
+                <div className="pt-4 border-t border-[var(--color-gray-800)] px-4">
                   <Button
                     variant="primary"
-                    size="lg"
-                    className="w-full group"
+                    size="md"
+                    className="w-full"
                     onClick={() => {
                       const appStoreSection = document.querySelector('[data-app-store-buttons]')
                       if (appStoreSection) {
@@ -286,32 +290,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                       }
                     }}
                   >
-                    <Download className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                    Download CASH OUT
+                    <Download className="w-4 h-4 mr-2" />
+                    Download
                   </Button>
-                </motion.div>
-
-                {/* Mobile App Store Info */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: (navigationItems.length + 1) * 0.1 }}
-                  className="text-center pt-2"
-                >
-                  <p className="text-sm text-gray-400">
-                    Available on iOS and Android
-                  </p>
-                  <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-500">
-                    <span className="flex items-center">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
-                      Free Download
-                    </span>
-                    <span className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-1"></span>
-                      4.8★ Rating
-                    </span>
-                  </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
