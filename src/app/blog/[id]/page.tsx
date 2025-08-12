@@ -5,9 +5,9 @@ import { Calendar, Clock, ArrowLeft, ThumbsUp, ThumbsDown } from 'lucide-react'
 import { supabase, type Article } from '@/lib/supabase'
 
 interface BlogPostProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // Helper function to estimate read time
@@ -34,7 +34,8 @@ async function getArticle(id: string): Promise<Article | null> {
 }
 
 export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
-  const article = await getArticle(params.id)
+  const { id } = await params
+  const article = await getArticle(id)
   
   if (!article) {
     return {
@@ -50,7 +51,8 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const article = await getArticle(params.id)
+  const { id } = await params
+  const article = await getArticle(id)
 
   if (!article) {
     notFound()

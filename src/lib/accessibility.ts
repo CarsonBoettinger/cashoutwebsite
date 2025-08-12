@@ -73,13 +73,15 @@ export interface AriaProps {
 }
 
 // Color contrast validation (simplified)
-export function validateContrast(_foreground: string, _background: string): {
+export function validateContrast(foreground: string, background: string): {
   ratio: number
   passesAA: boolean
   passesAAA: boolean
 } {
   // This is a simplified implementation
   // In a real app, you'd use a proper color contrast library
+  // TODO: Implement actual contrast calculation using foreground and background colors
+  console.log('Validating contrast for:', foreground, 'on', background)
   return {
     ratio: 4.5, // Placeholder
     passesAA: true,

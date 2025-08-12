@@ -186,7 +186,7 @@ export default function Help() {
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Still need help?</h2>
           <p className="text-gray-600 mb-6">
-            Can't find what you're looking for? Our support team is here to help.
+            Can&apos;t find what you&apos;re looking for? Our support team is here to help.
           </p>
           <a
             href="/contact"

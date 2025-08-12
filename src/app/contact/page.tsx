@@ -3,7 +3,7 @@ import { Mail, MessageCircle, Phone, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contact Us - CashOut',
-  description: 'Get in touch with the CashOut team. We\'re here to help with your recovery journey.',
+  description: 'Get in touch with the CashOut team. We&apos;re here to help with your recovery journey.',
 }
 
 export default function Contact() {
@@ -13,7 +13,7 @@ export default function Contact() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We're here to support you on your recovery journey. Reach out to us anytime.
+            We&apos;re here to support you on your recovery journey. Reach out to us anytime.
           </p>
         </div>
 
@@ -138,7 +138,7 @@ export default function Contact() {
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-2">Need immediate help?</h3>
               <p className="text-blue-800 mb-4">
-                If you're experiencing a crisis or need immediate support, please reach out to these resources:
+                If you&apos;re experiencing a crisis or need immediate support, please reach out to these resources:
               </p>
               <ul className="space-y-2 text-blue-800">
                 <li>• National Suicide Prevention Lifeline: 988</li>

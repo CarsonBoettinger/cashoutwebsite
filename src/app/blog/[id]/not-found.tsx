@@ -11,8 +11,8 @@ export default function NotFound() {
           </div>
           <h1 className="text-3xl font-bold text-white mb-4">Article Not Found</h1>
           <p className="text-gray-400 leading-relaxed">
-            The article you're looking for doesn't exist or may have been moved. 
-            Let's get you back to our blog.
+            The article you&apos;re looking for doesn&apos;t exist or may have been moved. 
+            Let&apos;s get you back to our blog.
           </p>
         </div>
         

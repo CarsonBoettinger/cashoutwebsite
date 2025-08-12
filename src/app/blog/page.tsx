@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
+import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { supabase, type ArticlePreview } from '@/lib/supabase'
 
 export const metadata: Metadata = {
