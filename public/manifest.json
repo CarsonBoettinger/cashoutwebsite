@@ -1,0 +1,26 @@
+{
+  "name": "CASH OUT - Quit Gambling for Good",
+  "short_name": "CASH OUT",
+  "description": "The #1 app for quitting gambling and staying clean—designed to help you break the habit and build a better future.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "categories": ["health", "lifestyle", "medical"],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

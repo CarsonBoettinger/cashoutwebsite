@@ -1,0 +1,14 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="96" fill="#10b981"/>
+  
+  <!-- Inner circle -->
+  <circle cx="96" cy="96" r="72" fill="#0a0a0a" opacity="0.1"/>
+  
+  <!-- Cash out symbol - stylized dollar sign with arrow -->
+  <path d="M96 40 L96 152 M80 56 C80 48 87 40 96 40 C105 40 112 48 112 56 C112 64 105 72 96 72 L96 72 C87 72 80 80 80 88 C80 96 87 104 96 104 C105 104 112 112 112 120 C112 128 105 136 96 136 C87 136 80 128 80 120" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Arrow pointing up and out -->
+  <path d="M120 72 L136 56 L120 40" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M136 56 L120 56" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none"/>
+</svg>

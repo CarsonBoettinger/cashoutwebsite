@@ -1,0 +1,39 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <!-- Main title -->
+  <text x="600" y="280" font-family="Inter, sans-serif" font-size="72" font-weight="700" fill="#ffffff" text-anchor="middle">
+    CASH OUT
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="340" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#10b981" text-anchor="middle">
+    Quit Gambling for Good
+  </text>
+  
+  <!-- Description -->
+  <text x="600" y="420" font-family="Inter, sans-serif" font-size="24" font-weight="300" fill="#d1d5db" text-anchor="middle">
+    Join thousands breaking free from gambling addiction
+  </text>
+  
+  <!-- App store badges placeholder -->
+  <rect x="400" y="480" width="120" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+  <text x="460" y="505" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">
+    iOS App
+  </text>
+  
+  <rect x="680" y="480" width="120" height="40" rx="8" fill="#3b82f6" opacity="0.8"/>
+  <text x="740" y="505" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">
+    Android App
+  </text>
+</svg>

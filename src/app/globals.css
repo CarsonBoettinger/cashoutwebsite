@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+  /* Primary Colors */
+  --color-primary: #10b981; /* Emerald green for hope/growth */
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
+  
+  /* Neutral Colors */
+  --color-black: #0a0a0a; /* Custom black background */
+  --color-gray-900: #111827;
+  --color-gray-800: #1f2937;
+  --color-gray-700: #374151;
+  --color-gray-100: #f3f4f6;
+  --color-white: #ffffff;
+  
+  /* Accent Colors */
+  --color-blue: #3b82f6; /* Trust/reliability */
+  --color-blue-light: #60a5fa;
+  
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* Spacing System - Base unit: 4px (0.25rem) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* Container */
+  --container-max-width: 1200px;
+
+  /* Responsive Breakpoints */
+  --breakpoint-sm: 640px;   /* Small tablets */
+  --breakpoint-md: 768px;   /* Tablets */
+  --breakpoint-lg: 1024px;  /* Small desktops */
+  --breakpoint-xl: 1280px;  /* Large desktops */
+  --breakpoint-2xl: 1536px; /* Extra large screens */
+
+  /* Animation */
+  --duration-micro: 200ms;
+  --duration-standard: 300ms;
+  --duration-complex: 500ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --stagger-delay: 100ms;
+}
+
+@theme inline {
+  /* Colors */
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-black: var(--color-black);
+  --color-gray-900: var(--color-gray-900);
+  --color-gray-800: var(--color-gray-800);
+  --color-gray-700: var(--color-gray-700);
+  --color-gray-100: var(--color-gray-100);
+  --color-white: var(--color-white);
+  --color-blue: var(--color-blue);
+  --color-blue-light: var(--color-blue-light);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-primary: var(--font-primary);
+
+  /* Spacing */
+  --space-1: var(--space-1);
+  --space-2: var(--space-2);
+  --space-3: var(--space-3);
+  --space-4: var(--space-4);
+  --space-5: var(--space-5);
+  --space-6: var(--space-6);
+  --space-8: var(--space-8);
+  --space-10: var(--space-10);
+  --space-12: var(--space-12);
+  --space-16: var(--space-16);
+  --space-20: var(--space-20);
+  --space-24: var(--space-24);
+}
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  line-height: var(--leading-normal);
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem; /* Account for any fixed headers */
+}
+
+/* Enhanced smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin for anchor links */
+section[id] {
+  scroll-margin-top: 5rem; /* Account for fixed navbar */
+}
+
+/* Ensure navbar doesn't interfere with content */
+body {
+  scroll-padding-top: 5rem;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #00ff00; /* High contrast green */
+    --color-primary-dark: #00cc00;
+    --color-primary-light: #66ff66;
+  }
+}
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus visible styles for better keyboard navigation */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Touch target minimum sizes */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.touch-target-recommended {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* Ensure sufficient color contrast */
+.text-contrast-aa {
+  /* Ensures WCAG AA compliance (4.5:1 ratio) */
+  color: #ffffff; /* White on dark backgrounds */
+}
+
+.text-contrast-aaa {
+  /* Ensures WCAG AAA compliance (7:1 ratio) */
+  color: #ffffff; /* White on dark backgrounds */
+}
+
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
