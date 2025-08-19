@@ -27,7 +27,7 @@ export interface TestimonialProps {
 
 // App Store Button Props
 export interface AppStoreButtonProps {
-  platform: 'ios' | 'android'
+  platform: 'ios'
   variant: 'primary' | 'secondary'
 }
 

@@ -12,7 +12,20 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "CASH OUT - Quit Gambling for Good",
-  description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS and Android.",
+  description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS.",
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '96x96', type: 'image/png' }
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/favicon.ico', color: '#10b981' }
+    ]
+  },
   keywords: [
     "quit gambling",
     "gambling addiction recovery",
@@ -45,7 +58,7 @@ export const metadata: Metadata = {
     url: "https://cashout.app",
     siteName: "CASH OUT",
     title: "CASH OUT - Quit Gambling for Good",
-    description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS and Android.",
+    description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS.",
     images: [
       {
         url: "/og-image.svg",
@@ -61,7 +74,7 @@ export const metadata: Metadata = {
     site: "@cashoutapp",
     creator: "@cashoutapp",
     title: "CASH OUT - Quit Gambling for Good",
-    description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS and Android.",
+    description: "Join thousands using CASH OUT to quit gambling, track progress, and recover for life. Download now on iOS.",
     images: ["/og-image.svg"],
   },
   alternates: {
@@ -94,7 +107,7 @@ export default function RootLayout({
     "description": "The #1 app for quitting gambling and staying clean—designed to help you break the habit and build a better future.",
     "url": "https://cashout.app",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": ["iOS", "Android"],
+    "operatingSystem": ["iOS"],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -132,6 +145,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -1,4 +1,5 @@
 export { Hero } from './Hero'
+export { AppShowcase } from './AppShowcase'
 export { Features } from './Features'
 export { Progress } from './Progress'
 export { Testimonials } from './Testimonials'

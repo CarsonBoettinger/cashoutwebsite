@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { AppStoreButtons } from '@/components/icons/AppStoreButtons'
 import { ChevronDown } from 'lucide-react'
+import Image from 'next/image'
 import { 
   heroTitleVariants, 
   heroSubtitleVariants, 
@@ -16,7 +17,7 @@ import {
 
 const Hero: React.FC = () => {
   const scrollToNextSection = () => {
-    const nextSection = document.querySelector('#features')
+    const nextSection = document.querySelector('#app-showcase')
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' })
     }
@@ -33,85 +34,100 @@ const Hero: React.FC = () => {
       </div>
 
       <Container className="relative z-10 w-full">
-        <div className="text-center max-w-5xl mx-auto">
-          {/* Main Headline with Gradient Text Effect */}
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6 lg:mb-8"
-            {...getAnimationProps(heroTitleVariants, defaultViewport)}
-            id="hero-heading"
-          >
-            <span className="bg-gradient-to-r from-white via-gray-100 to-[var(--color-primary-light)] bg-clip-text text-transparent">
-              Regain Control.
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-[var(--color-primary-light)] via-[var(--color-primary)] to-white bg-clip-text text-transparent">
-              Rebuild Your Life.
-            </span>
-          </motion.h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left Column - Text Content */}
+          <div className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
+            {/* Trust Badge */}
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+            </motion.div>
 
-          {/* Descriptive Subtext */}
-          <motion.p 
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-4xl mx-auto px-2 sm:px-0"
-            {...getAnimationProps(heroSubtitleVariants, defaultViewport)}
-            id="hero-description"
-          >
-            CASH OUT is the #1 app for quitting gambling and staying clean—designed to help you break the habit and build a better future.
-          </motion.p>
+            {/* Main Headline with Gradient Text Effect */}
+            <motion.h1 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6 lg:mb-8"
+              {...getAnimationProps(heroTitleVariants, defaultViewport)}
+              id="hero-heading"
+            >
+              <span className="bg-gradient-to-r from-white via-gray-100 to-[var(--color-primary-light)] bg-clip-text text-transparent">
+                Quit Gambling
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-[var(--color-primary-light)] via-[var(--color-primary)] to-white bg-clip-text text-transparent">
+                For Life With CASH OUT
+              </span>
+            </motion.h1>
 
-          {/* App Store Buttons */}
+            {/* Descriptive Subtext */}
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-8 sm:mb-10 lg:mb-12"
+              {...getAnimationProps(heroSubtitleVariants, defaultViewport)}
+              id="hero-description"
+            >
+              Meet CASH OUT, the #1 app for quitting gambling with all the tools included to make the process easier for you.
+            </motion.p>
+
+            {/* App Store Buttons */}
+            <motion.div
+              className="mb-8 sm:mb-10"
+              {...getAnimationProps(heroButtonsVariants, defaultViewport)}
+            >
+              <AppStoreButtons 
+                variant="primary"
+                layout="horizontal"
+                className="justify-center lg:justify-start flex-col sm:flex-row gap-3 sm:gap-4"
+              />
+            </motion.div>
+          </div>
+
+          {/* Right Column - Phone Image (Desktop) */}
           <motion.div
-            className="mb-12 sm:mb-14 lg:mb-16"
-            {...getAnimationProps(heroButtonsVariants, defaultViewport)}
+            className="hidden lg:flex justify-end order-first lg:order-last"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <AppStoreButtons 
-              variant="primary"
-              layout="horizontal"
-              className="justify-center flex-col sm:flex-row gap-3 sm:gap-4"
-            />
+            <div className="relative">
+              {/* Phone with app screen */}
+              <div className="w-[28rem] sm:w-[32rem] lg:w-[36rem] h-auto">
+                <Image
+                  src="/HomescreenCASHOUT.png"
+                  alt="CASH OUT app home screen - gambling recovery app"
+                  width={576}
+                  height={1152}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </motion.div>
 
-          {/* Hero Image Placeholder */}
+          {/* Mobile Phone Image - Centered below text */}
           <motion.div
-            className="mb-12 sm:mb-14 lg:mb-16"
-            {...getAnimationProps(scaleIn, defaultViewport, 0.6)}
+            className="lg:hidden order-last"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="relative max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
-              <div className="aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] bg-gradient-to-br from-[var(--color-gray-800)] to-[var(--color-gray-900)] rounded-xl sm:rounded-2xl border border-[var(--color-gray-700)] shadow-2xl overflow-hidden">
-                {/* Placeholder content for hero image/illustration */}
-                <div className="flex items-center justify-center h-full p-4 sm:p-6 lg:p-8">
-                  <div className="text-center">
-                    <div 
-                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-full flex items-center justify-center"
-                      role="img"
-                      aria-label="Success checkmark icon representing recovery achievement"
-                    >
-                      <svg 
-                        className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
-                        />
-                      </svg>
-                    </div>
-                    <p className="text-gray-400 text-xs sm:text-sm" aria-hidden="true">
-                      Hero Image/Illustration
-                      <br />
-                      <span className="text-xs opacity-75">Someone looking relieved or empowered</span>
-                    </p>
-                  </div>
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="w-[28rem] sm:w-[32rem] h-auto">
+                  <Image
+                    src="/HomescreenCASHOUT.png"
+                    alt="CASH OUT app home screen - gambling recovery app"
+                    width={576}
+                    height={1152}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
                 </div>
               </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 bg-[var(--color-primary)] rounded-full opacity-20 animate-pulse" />
-              <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 bg-[var(--color-blue)] rounded-full opacity-15 animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
           </motion.div>
         </div>
@@ -127,7 +143,7 @@ const Hero: React.FC = () => {
         <button
           onClick={scrollToNextSection}
           className="flex flex-col items-center text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 group touch-target focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-black)] rounded-md"
-          aria-label="Scroll to features section"
+          aria-label="Scroll to app showcase section"
           style={{ minHeight: '48px', minWidth: '48px' }}
         >
           <span className="text-xs sm:text-sm mb-2 opacity-75 group-hover:opacity-100 transition-opacity">
